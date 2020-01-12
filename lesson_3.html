@@ -1,0 +1,246 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<title></title>
+	<meta name="generator" content="LibreOffice 6.0.7.3 (Linux)"/>
+	<meta name="author" content="Windows User"/>
+	<meta name="created" content="2020-01-07T14:37:00"/>
+	<meta name="changedby" content="Windows User"/>
+	<meta name="changed" content="2020-01-12T17:23:00"/>
+	<meta name="AppVersion" content="14.0000"/>
+	<meta name="DocSecurity" content="0"/>
+	<meta name="HyperlinksChanged" content="false"/>
+	<meta name="LinksUpToDate" content="false"/>
+	<meta name="ScaleCrop" content="false"/>
+	<meta name="ShareDoc" content="false"/>
+	<style type="text/css">
+		@page { margin-left: 3cm; margin-right: 1.5cm; margin-top: 2cm; margin-bottom: 2cm }
+		p { margin-bottom: 0.25cm; direction: ltr; line-height: 115%; text-align: left; orphans: 2; widows: 2 }
+		p.western { font-size: 11pt }
+		p.cjk { font-size: 11pt }
+		pre { direction: ltr; line-height: 115%; text-align: left; orphans: 2; widows: 2 }
+		pre.western { font-family: "Liberation Mono", serif }
+		pre.cjk { font-family: "Liberation Mono" }
+		pre.ctl { font-family: "Liberation Mono" }
+	</style>
+</head>
+<body lang="ru-RU" dir="ltr">
+<p class="western" style="margin-bottom: 0.35cm"><font size="4" style="font-size: 14pt"><b>*
+Задание 1</b></font></p>
+<p class="western" style="margin-bottom: 0.35cm">Создать файл
+file1 и наполнить его произвольным
+содержимым. Скопировать его в file2. Создать
+символическую ссылку file3 на file1. Создать
+жесткую ссылку file4 на file1. Посмотреть,
+какие айноды у файлов. Удалить file1. Что
+стало с остальными созданными файлами?
+Попробовать вывести их на экран.</p>
+<pre class="western"><font color="#8ae234"><span lang="en-US"><b>irina@irina-300E4C-300E5C-300E7C</b></span></font><span lang="en-US">:</span><font color="#729fcf"><span lang="en-US"><b>~/Документы</b></span></font><span lang="en-US">$ echo *some text* &gt; file1</span>
+<font color="#8ae234"><span lang="en-US"><b>irina@irina-300E4C-300E5C-300E7C</b></span></font><span lang="en-US">:</span><font color="#729fcf"><span lang="en-US"><b>~/</b></span></font><font color="#729fcf"><b>Документы</b></font><span lang="en-US">$ cat file1</span>
+<span lang="en-US">*some text*</span>
+<font color="#8ae234"><span lang="en-US"><b>irina@irina-300E4C-300E5C-300E7C</b></span></font><span lang="en-US">:</span><font color="#729fcf"><span lang="en-US"><b>~/</b></span></font><font color="#729fcf"><b>Документы</b></font><span lang="en-US">$ cp file1 file2</span>
+<font color="#8ae234"><span lang="en-US"><b>irina@irina-300E4C-300E5C-300E7C</b></span></font><span lang="en-US">:</span><font color="#729fcf"><span lang="en-US"><b>~/</b></span></font><font color="#729fcf"><b>Документы</b></font><span lang="en-US">$ cat file2</span>
+<span lang="en-US">*some text*</span>
+<font color="#8ae234"><span lang="en-US"><b>irina@irina-300E4C-300E5C-300E7C</b></span></font><span lang="en-US">:</span><font color="#729fcf"><span lang="en-US"><b>~/</b></span></font><font color="#729fcf"><b>Документы</b></font><span lang="en-US">$ ln -s file1 file3</span>
+<font color="#8ae234"><span lang="en-US"><b>irina@irina-300E4C-300E5C-300E7C</b></span></font><span lang="en-US">:</span><font color="#729fcf"><span lang="en-US"><b>~/</b></span></font><font color="#729fcf"><b>Документы</b></font><span lang="en-US">$ cat file3</span>
+<span lang="en-US">*some text*</span>
+<font color="#8ae234"><span lang="en-US"><b>irina@irina-300E4C-300E5C-300E7C</b></span></font><span lang="en-US">:</span><font color="#729fcf"><span lang="en-US"><b>~/</b></span></font><font color="#729fcf"><b>Документы</b></font><span lang="en-US">$ ln file1 file4</span>
+<font color="#8ae234"><span lang="en-US"><b>irina@irina-300E4C-300E5C-300E7C</b></span></font><span lang="en-US">:</span><font color="#729fcf"><span lang="en-US"><b>~/</b></span></font><font color="#729fcf"><b>Документы</b></font><span lang="en-US">$ cat file4</span>
+<span lang="en-US">*some text*</span>
+<font color="#8ae234"><span lang="en-US"><b>irina@irina-300E4C-300E5C-300E7C</b></span></font><span lang="en-US">:</span><font color="#729fcf"><span lang="en-US"><b>~/</b></span></font><font color="#729fcf"><b>Документы</b></font><span lang="en-US">$ ls -i</span>
+<span lang="en-US">1311001 file1  1320315 file2  1320924 </span><font color="#34e2e2"><span lang="en-US"><b>file3</b></span></font><span lang="en-US">  1311001 file4</span>
+<font color="#8ae234"><span lang="en-US"><b>irina@irina-300E4C-300E5C-300E7C</b></span></font><span lang="en-US">:</span><font color="#729fcf"><span lang="en-US"><b>~/Документы</b></span></font><span lang="en-US">$ ls -il</span>
+итого<span lang="en-US"> 12</span>
+<span lang="en-US">1311001 -rw-rw-r-- 2 irina irina 12 </span>янв<span lang="en-US"> 12 16:32 file1</span>
+<span lang="en-US">1320315 -rw-rw-r-- 1 irina irina 12 </span>янв<span lang="en-US"> 12 16:32 file2</span>
+<span lang="en-US">1320924 lrwxrwxrwx 1 irina irina  5 </span>янв<span lang="en-US"> 12 16:32 </span><font color="#34e2e2"><span lang="en-US"><b>file3</b></span></font><span lang="en-US"> -&gt; file1</span>
+<span lang="en-US">1311001 -rw-rw-r-- 2 irina irina 12 </span>янв<span lang="en-US"> 12 16:32 file4</span>
+<font color="#8ae234"><span lang="en-US"><b>irina@irina-300E4C-300E5C-300E7C</b></span></font><span lang="en-US">:</span><font color="#729fcf"><span lang="en-US"><b>~/Документы</b></span></font><span lang="en-US">$ rm file1</span>
+<font color="#8ae234"><span lang="en-US"><b>irina@irina-300E4C-300E5C-300E7C</b></span></font><span lang="en-US">:</span><font color="#729fcf"><span lang="en-US"><b>~/</b></span></font><font color="#729fcf"><b>Документы</b></font><span lang="en-US">$ ls -il</span>
+итого<span lang="en-US"> 8</span>
+<span lang="en-US">1320315 -rw-rw-r-- 1 irina irina 12 </span>янв<span lang="en-US"> 12 16:32 file2</span>
+<span lang="en-US">1320924 lrwxrwxrwx 1 irina irina  5 </span>янв<span lang="en-US"> 12 16:32 </span><font color="#ef2929"><span lang="en-US"><b>file3</b></span></font><span lang="en-US"> -&gt; </span><font color="#ef2929"><span lang="en-US"><b>file1</b></span></font>
+<span lang="en-US">1311001 -rw-rw-r-- 1 irina irina 12 </span>янв<span lang="en-US"> 12 16:32 file4</span>
+<font color="#8ae234"><span lang="en-US"><b>irina@irina-300E4C-300E5C-300E7C</b></span></font><span lang="en-US">:</span><font color="#729fcf"><span lang="en-US"><b>~/Документы</b></span></font><span lang="en-US">$ cat file2</span>
+<span lang="en-US">*some text*</span>
+<font color="#8ae234"><span lang="en-US"><b>irina@irina-300E4C-300E5C-300E7C</b></span></font><span lang="en-US">:</span><font color="#729fcf"><span lang="en-US"><b>~/</b></span></font><font color="#729fcf"><b>Документы</b></font><span lang="en-US">$ cat file3</span>
+cat: file3: Нет такого файла или каталога
+<font color="#8ae234"><span lang="en-US"><b>irina@irina-300E4C-300E5C-300E7C</b></span></font><span lang="en-US">:</span><font color="#729fcf"><span lang="en-US"><b>~/</b></span></font><font color="#729fcf"><b>Документы</b></font><span lang="en-US">$ cat file4</span>
+<span lang="en-US">*some text*</span>
+
+
+
+</pre><p class="western" style="margin-bottom: 0.35cm">
+<font size="4" style="font-size: 14pt"><span lang="en-US"><b>*
+</b></span></font><font size="4" style="font-size: 14pt"><b>Задание
+2</b></font></p>
+<p class="western" style="margin-bottom: 0.35cm">Дать созданным
+файлам другие, произвольные имена.
+Создать новую символическую ссылку.
+Переместить ссылки в другую директорию.</p>
+<pre class="western"><font color="#8ae234"><span lang="en-US"><b>irina@irina-300E4C-300E5C-300E7C</b></span></font><span lang="en-US">:</span><font color="#729fcf"><span lang="en-US"><b>~/Документы</b></span></font><span lang="en-US">$ mv file2 file2copy</span>
+<font color="#8ae234"><span lang="en-US"><b>irina@irina-300E4C-300E5C-300E7C</b></span></font><span lang="en-US">:</span><font color="#729fcf"><span lang="en-US"><b>~/</b></span></font><font color="#729fcf"><b>Документы</b></font><span lang="en-US">$ mv file4 file4copy</span>
+<font color="#8ae234"><span lang="en-US"><b>irina@irina-300E4C-300E5C-300E7C</b></span></font><span lang="en-US">:</span><font color="#729fcf"><span lang="en-US"><b>~/</b></span></font><font color="#729fcf"><b>Документы</b></font><span lang="en-US">$ ln -s file2copy linkfile2copy</span>
+<font color="#8ae234"><span lang="en-US"><b>irina@irina-300E4C-300E5C-300E7C</b></span></font><span lang="en-US">:</span><font color="#729fcf"><span lang="en-US"><b>~/</b></span></font><font color="#729fcf"><b>Документы</b></font><span lang="en-US">$ cat linkfile2copy</span>
+<span lang="en-US">*some text*</span>
+<font color="#8ae234"><span lang="en-US"><b>irina@irina-300E4C-300E5C-300E7C</b></span></font><span lang="en-US">:</span><font color="#729fcf"><span lang="en-US"><b>~/</b></span></font><font color="#729fcf"><b>Документы</b></font><span lang="en-US">$ ls -il</span>
+итого<span lang="en-US"> 8</span>
+<span lang="en-US">1320315 -rw-rw-r-- 1 irina irina 12 </span>янв<span lang="en-US"> 12 16:32 file2copy</span>
+<span lang="en-US">1320924 lrwxrwxrwx 1 irina irina  5 </span>янв<span lang="en-US"> 12 16:32 </span><font color="#ef2929"><span lang="en-US"><b>file3</b></span></font><span lang="en-US"> -&gt; </span><font color="#ef2929"><span lang="en-US"><b>file1</b></span></font>
+<span lang="en-US">1311001 -rw-rw-r-- 1 irina irina 12 </span>янв<span lang="en-US"> 12 16:32 file4copy</span>
+<span lang="en-US">1320926 lrwxrwxrwx 1 irina irina  9 </span>янв<span lang="en-US"> 12 16:40 </span><font color="#34e2e2"><span lang="en-US"><b>linkfile2copy</b></span></font><span lang="en-US"> -&gt; file2copy</span>
+<font color="#8ae234"><span lang="en-US"><b>irina@irina-300E4C-300E5C-300E7C</b></span></font><span lang="en-US">:</span><font color="#729fcf"><span lang="en-US"><b>~/Документы</b></span></font><span lang="en-US">$ mkdir DirLink</span>
+<font color="#8ae234"><span lang="en-US"><b>irina@irina-300E4C-300E5C-300E7C</b></span></font><span lang="en-US">:</span><font color="#729fcf"><span lang="en-US"><b>~/</b></span></font><font color="#729fcf"><b>Документы</b></font><span lang="en-US">$ mv linkfile2copy DirLink/</span>
+<font color="#8ae234"><span lang="en-US"><b>irina@irina-300E4C-300E5C-300E7C</b></span></font><span lang="en-US">:</span><font color="#729fcf"><span lang="en-US"><b>~/</b></span></font><font color="#729fcf"><b>Документы</b></font><span lang="en-US">$ ls -il DirLink/</span>
+итого<span lang="en-US"> 0</span>
+<span lang="en-US">1320926 lrwxrwxrwx 1 irina irina 9 </span>янв<span lang="en-US"> 12 16:40 </span><font color="#ef2929"><span lang="en-US"><b>linkfile2copy</b></span></font><span lang="en-US"> -&gt; </span><font color="#ef2929"><span lang="en-US"><b>file2copy</b></span></font></pre><p lang="en-US" class="western" style="margin-bottom: 0.35cm">
+<br/>
+<br/>
+
+</p>
+<p class="western" style="margin-left: 1.27cm; margin-bottom: 0.35cm">
+<font size="4" style="font-size: 14pt"><span lang="en-US"><b>*
+</b></span></font><font size="4" style="font-size: 14pt"><b>Задание
+3</b></font></p>
+<p class="western" style="margin-bottom: 0.35cm">Создать два
+произвольных файла. Первому присвоить
+права на чтение, запись для владельца
+и группы, только на чтение для всех.
+Второму присвоить права на чтение,
+запись только для владельца. Сделать
+это в численном и символьном виде.</p>
+<pre class="western"><font color="#8ae234"><span lang="en-US"><b>irina@irina-300E4C-300E5C-300E7C</b></span></font><span lang="en-US">:</span><font color="#729fcf"><span lang="en-US"><b>~/Документы</b></span></font><span lang="en-US">$ touch file1 file2</span>
+<font color="#8ae234"><span lang="en-US"><b>irina@irina-300E4C-300E5C-300E7C</b></span></font><span lang="en-US">:</span><font color="#729fcf"><span lang="en-US"><b>~/</b></span></font><font color="#729fcf"><b>Документы</b></font><span lang="en-US">$ ls</span>
+<span lang="en-US">file1  file2</span>
+<font color="#8ae234"><span lang="en-US"><b>irina@irina-300E4C-300E5C-300E7C</b></span></font><span lang="en-US">:</span><font color="#729fcf"><span lang="en-US"><b>~/</b></span></font><font color="#729fcf"><b>Документы</b></font><span lang="en-US">$ chmod ug=rw,o=r file1</span>
+<font color="#8ae234"><span lang="en-US"><b>irina@irina-300E4C-300E5C-300E7C</b></span></font><span lang="en-US">:</span><font color="#729fcf"><span lang="en-US"><b>~/</b></span></font><font color="#729fcf"><b>Документы</b></font><span lang="en-US">$ chmod o=r,u+w file2</span>
+<font color="#8ae234"><span lang="en-US"><b>irina@irina-300E4C-300E5C-300E7C</b></span></font><span lang="en-US">:</span><font color="#729fcf"><span lang="en-US"><b>~/</b></span></font><font color="#729fcf"><b>Документы</b></font><span lang="en-US">$ ls -l</span>
+итого<span lang="en-US"> 0</span>
+<span lang="en-US">-rw-rw-r-- 1 irina irina 0 </span>янв<span lang="en-US"> 11 19:20 file1</span>
+<span lang="en-US">-rw-r--r-- 1 irina irina 0 </span>янв<span lang="en-US"> 11 19:20 file2</span>
+Символьный вид
+<font color="#8ae234"><span lang="en-US"><b>irina</b></span></font><font color="#8ae234"><b>@</b></font><font color="#8ae234"><span lang="en-US"><b>irina</b></span></font><font color="#8ae234"><b>-300</b></font><font color="#8ae234"><span lang="en-US"><b>E</b></span></font><font color="#8ae234"><b>4</b></font><font color="#8ae234"><span lang="en-US"><b>C</b></span></font><font color="#8ae234"><b>-300</b></font><font color="#8ae234"><span lang="en-US"><b>E</b></span></font><font color="#8ae234"><b>5</b></font><font color="#8ae234"><span lang="en-US"><b>C</b></span></font><font color="#8ae234"><b>-300</b></font><font color="#8ae234"><span lang="en-US"><b>E</b></span></font><font color="#8ae234"><b>7</b></font><font color="#8ae234"><span lang="en-US"><b>C</b></span></font>:<font color="#729fcf"><b>~/Документы</b></font>$ <span lang="en-US">chmod</span> 664 <span lang="en-US">file</span>1
+<font color="#8ae234"><span lang="en-US"><b>irina@irina-300E4C-300E5C-300E7C</b></span></font><span lang="en-US">:</span><font color="#729fcf"><span lang="en-US"><b>~/</b></span></font><font color="#729fcf"><b>Документы</b></font><span lang="en-US">$ chmod 644 file2</span>
+<font color="#8ae234"><span lang="en-US"><b>irina@irina-300E4C-300E5C-300E7C</b></span></font><span lang="en-US">:</span><font color="#729fcf"><span lang="en-US"><b>~/</b></span></font><font color="#729fcf"><b>Документы</b></font><span lang="en-US">$ ls -l</span>
+итого<span lang="en-US"> 0</span>
+<span lang="en-US">-rw-rw-r-- 1 irina irina 0 </span>янв<span lang="en-US"> 11 19:20 file1</span>
+<span lang="en-US">-rw-r--r-- 1 irina irina 0 </span>янв<span lang="en-US"> 11 19:20 file2</span>
+<font color="#8ae234"><span lang="en-US"><b>irina@irina-300E4C-300E5C-300E7C</b></span></font><span lang="en-US">:</span><font color="#729fcf"><span lang="en-US"><b>~/</b></span></font><font color="#729fcf"><b>Документы</b></font><span lang="en-US">$ </span>
+
+
+<font face="Calibri, serif"><font size="4" style="font-size: 14pt"><span lang="en-US"><b>* Задание 4</b></span></font></font>
+<font face="Calibri, serif">Создать пользователя, обладающего возможностью выполнять действия от имени суперпользователя.</font>
+
+<font color="#8ae234"><span lang="en-US"><b>irina@irina-300E4C-300E5C-300E7C</b></span></font><span lang="en-US">:</span><font color="#729fcf"><span lang="en-US"><b>~</b></span></font><span lang="en-US">$ sudo useradd -G sudo yoda</span>
+<font color="#8ae234"><span lang="en-US"><b>irina@irina-300E4C-300E5C-300E7C</b></span></font><span lang="en-US">:</span><font color="#729fcf"><span lang="en-US"><b>~</b></span></font><span lang="en-US">$ sudo passwd yoda</span>
+Введите новый пароль UNIX: 
+Повторите ввод нового пароля UNIX: 
+passwd: пароль успешно обновлён
+<font color="#8ae234"><b>irina@irina-300E4C-300E5C-300E7C</b></font>:<font color="#729fcf"><b>~</b></font>$ cat /etc/group
+<span lang="en-US">yoda:x:1001:</span>
+<b>Проверка:</b>
+<font color="#8ae234"><span lang="en-US"><b>irina@irina-300E4C-300E5C-300E7C</b></span></font><span lang="en-US">:</span><font color="#729fcf"><span lang="en-US"><b>~</b></span></font><span lang="en-US">$ su yoda</span>
+Пароль<span lang="en-US">: </span>
+<span lang="en-US">$ sudo adduser kinobi</span>
+<span lang="en-US">$ sudo adduser kinobi</span>
+Добавляется пользователь «kinobi» ...
+Добавляется новая группа «kinobi» (1002) ...
+Добавляется новый пользователь «kinobi» (1002) в группу «kinobi» ...
+Создаётся домашний каталог «/home/kinobi» ...
+Копирование файлов из «/etc/skel» ...
+Введите новый пароль UNIX: 
+Повторите ввод нового пароля UNIX: 
+passwd: пароль успешно обновлён
+Изменение информации о пользователе kinobi
+Введите новое значение или нажмите ENTER для выбора значения по умолчанию
+        Полное имя []: 
+        Номер комнаты []: 
+        Рабочий телефон []: 
+        Домашний телефон []: 
+        Другое []: 
+Данная информация корректна? <span lang="en-US">[Y/n] </span>
+<span lang="en-US">$ sudo userdel -r kinobi</span>
+<font face="Calibri, serif"><font size="4" style="font-size: 14pt"><b>* Задание 5 </b></font></font>
+<font face="Calibri, serif"><font size="2" style="font-size: 11pt">Создать группу developer, несколько пользователей, входящих в эту группу. Создать директорию для совместной работы. Сделать так, чтобы созданные одними пользователями файлы могли изменять другие пользователи этой группы.</font></font>
+<font color="#8ae234"><span lang="en-US"><b>irina@irina-300E4C-300E5C-300E7C</b></span></font><span lang="en-US">:</span><font color="#729fcf"><span lang="en-US"><b>~</b></span></font><span lang="en-US">$ sudo useradd -m -G developer -s /bin/bash user1</span>
+<font color="#8ae234"><span lang="en-US"><b>irina@irina-300E4C-300E5C-300E7C</b></span></font><span lang="en-US">:</span><font color="#729fcf"><span lang="en-US"><b>~</b></span></font><span lang="en-US">$ sudo useradd -m -G developer -s /bin/bash user2</span>
+<font color="#8ae234"><span lang="en-US"><b>irina@irina-300E4C-300E5C-300E7C</b></span></font><span lang="en-US">:</span><font color="#729fcf"><span lang="en-US"><b>~</b></span></font><span lang="en-US">$ sudo passwd user1</span>
+Введите новый пароль UNIX: 
+Повторите ввод нового пароля UNIX: 
+passwd: пароль успешно обновлён
+<font color="#8ae234"><b>irina@irina-300E4C-300E5C-300E7C</b></font>:<font color="#729fcf"><b>~</b></font>$ sudo passwd user2
+Введите новый пароль UNIX: 
+Повторите ввод нового пароля UNIX: 
+passwd: пароль успешно обновлён
+<font color="#8ae234"><b>irina@irina-300E4C-300E5C-300E7C</b></font>:<font color="#729fcf"><b>~</b></font>$ cat /etc/group
+<span lang="en-US">user1:x:1003:</span>
+<span lang="en-US">user2:x:1004:</span>
+<font color="#8ae234"><font face="Arial, serif"><font size="2" style="font-size: 10pt"><span lang="en-US"><b>irina@irina-300E4C-300E5C-300E7C</b></span></font></font></font><font color="#222222"><font face="Arial, serif"><font size="2" style="font-size: 10pt"><span lang="en-US">:</span></font></font></font><font color="#729fcf"><font face="Arial, serif"><font size="2" style="font-size: 10pt"><span lang="en-US"><b>~</b></span></font></font></font><font color="#222222"><font face="Arial, serif"><font size="2" style="font-size: 10pt"><span lang="en-US">$ sudo mkdir /developer</span></font></font></font>
+<span lang="en-US">[sudo] </span>пароль<span lang="en-US"> </span>для<span lang="en-US"> irina: </span>
+<font color="#8ae234"><span lang="en-US"><b>irina@irina-300E4C-300E5C-300E7C</b></span></font><span lang="en-US">:</span><font color="#729fcf"><span lang="en-US"><b>~</b></span></font><span lang="en-US">$ sudo chgrp developer /developer</span>
+<font color="#8ae234"><span lang="en-US"><b>irina@irina-300E4C-300E5C-300E7C</b></span></font><span lang="en-US">:</span><font color="#729fcf"><span lang="en-US"><b>~</b></span></font><span lang="en-US">$ sudo chmod 2775 /developer</span>
+<font color="#8ae234"><span lang="en-US"><b>irina@irina-300E4C-300E5C-300E7C</b></span></font><span lang="en-US">:</span><font color="#729fcf"><span lang="en-US"><b>~</b></span></font><span lang="en-US">$ ls -al /developer</span>
+итого<span lang="en-US"> 8</span>
+<span lang="en-US">drwxrwsr-x  2 root developer 4096 </span>янв<span lang="en-US"> 12 13:34 </span><font color="#729fcf"><span lang="en-US"><b>.</b></span></font>
+<span lang="en-US">drwxr-xr-x 25 root root      4096 </span>янв<span lang="en-US"> 12 13:34 </span><font color="#729fcf"><span lang="en-US"><b>..</b></span></font>
+<font face="Calibri, serif"><font size="2" style="font-size: 11pt"><b>Проверка:</b></font></font>
+<font color="#8ae234"><font face="Arial, serif"><font size="2" style="font-size: 10pt"><span lang="en-US"><b>irina@irina-300E4C-300E5C-300E7C</b></span></font></font></font><font color="#222222"><font face="Arial, serif"><font size="2" style="font-size: 10pt"><span lang="en-US">:</span></font></font></font><font color="#729fcf"><font face="Arial, serif"><font size="2" style="font-size: 10pt"><span lang="en-US"><b>~</b></span></font></font></font><font color="#222222"><font face="Arial, serif"><font size="2" style="font-size: 10pt"><span lang="en-US">$ su user1</span></font></font></font>
+Пароль<span lang="en-US">: </span>
+<font color="#8ae234"><span lang="en-US"><b>user1@irina-300E4C-300E5C-300E7C</b></span></font><span lang="en-US">:</span><font color="#729fcf"><span lang="en-US"><b>/home/irina</b></span></font><span lang="en-US">$ cd /developer</span>
+<font color="#8ae234"><span lang="en-US"><b>user1@irina-300E4C-300E5C-300E7C</b></span></font><span lang="en-US">:</span><font color="#729fcf"><span lang="en-US"><b>/developer</b></span></font><span lang="en-US">$ touch file1.txt</span>
+<font color="#8ae234"><span lang="en-US"><b>user1@irina-300E4C-300E5C-300E7C</b></span></font><span lang="en-US">:</span><font color="#729fcf"><span lang="en-US"><b>/developer</b></span></font><span lang="en-US">$ ls</span>
+<span lang="en-US">file1.txt</span>
+<font color="#8ae234"><span lang="en-US"><b>user1@irina-300E4C-300E5C-300E7C</b></span></font><span lang="en-US">:</span><font color="#729fcf"><span lang="en-US"><b>/developer</b></span></font><span lang="en-US">$ su user2</span>
+Пароль<span lang="en-US">: </span>
+<font color="#8ae234"><span lang="en-US"><b>user2@irina-300E4C-300E5C-300E7C</b></span></font><span lang="en-US">:</span><font color="#729fcf"><span lang="en-US"><b>/developer</b></span></font><span lang="en-US">$ echo test &gt; file1.txt</span>
+<font color="#8ae234"><span lang="en-US"><b>user2@irina-300E4C-300E5C-300E7C</b></span></font><span lang="en-US">:</span><font color="#729fcf"><span lang="en-US"><b>/developer</b></span></font><span lang="en-US">$ cat file1.txt </span>
+test
+
+<font face="Calibri, serif"><font size="2" style="font-size: 11pt"><b>* Задание 6</b></font></font></pre><p class="western" style="margin-bottom: 0.35cm">
+Создать в директории для совместной
+работы поддиректорию для обмена файлами,
+но чтобы удалять файлы могли только их
+создатели.</p>
+<pre class="western" style="margin-bottom: 0.35cm"><font color="#8ae234"><span lang="en-US"><b>irina@irina-300E4C-300E5C-300E7C</b></span></font><span lang="en-US">:</span><font color="#729fcf"><span lang="en-US"><b>/developer</b></span></font><span lang="en-US">$ sudo mkdir fileshare</span>
+[sudo] пароль для irina: 
+<font color="#8ae234"><b>irina@irina-300E4C-300E5C-300E7C</b></font>:<font color="#729fcf"><b>/developer</b></font>$ ls -l
+итого<span lang="en-US"> 8</span>
+<span lang="en-US">-rw-rw-r-- 1 user1 developer    5 </span>янв<span lang="en-US"> 12 13:56 file1.txt</span>
+<span lang="en-US">drwxr-sr-x 2 root  developer 4096 </span>янв<span lang="en-US"> 12 14:18 </span><font color="#729fcf"><span lang="en-US"><b>fileshare</b></span></font>
+<font color="#8ae234"><span lang="en-US"><b>irina@irina-300E4C-300E5C-300E7C</b></span></font><font color="#729fcf"><span lang="en-US"><b>:/developer$ sudo chmod +t fileshare/</b></span></font>
+[sudo] пароль для irina: 
+<font color="#8ae234"><b>irina@irina-300E4C-300E5C-300E7C</b></font>:<font color="#729fcf"><b>/developer</b></font>$ ls -l 
+итого<span lang="en-US"> 8</span>
+<span lang="en-US">-rw-rw-r-- 1 user1 developer    5 </span>янв<span lang="en-US"> 12 13:56 file1.txt</span>
+<span lang="en-US">drwxr-sr-t 2 root  developer 4096 </span>янв<span lang="en-US"> 12 14:18 </span><font color="#d3d7cf"><span lang="en-US">fileshare</span></font>
+<font color="#8ae234"><span lang="en-US"><b>irina@irina-300E4C-300E5C-300E7C</b></span></font><font color="#729fcf"><span lang="en-US"><b>:/developer$ sudo chmod g+w fileshare/</b></span></font>
+<font color="#8ae234"><span lang="en-US"><b>irina@irina-300E4C-300E5C-300E7C</b></span></font><span lang="en-US">:</span><font color="#729fcf"><span lang="en-US"><b>/developer</b></span></font><span lang="en-US">$ ls -l</span>
+итого<span lang="en-US"> 8</span>
+<span lang="en-US">-rw-rw-r-- 1 user1 developer    5 </span>янв<span lang="en-US"> 12 16:09 file1.txt</span>
+<span lang="en-US">drwxrwsr-t 2 root  developer 4096 </span>янв<span lang="en-US"> 12 14:18 </span><font color="#d3d7cf"><span lang="en-US">fileshare</span></font>
+<a name="_GoBack"></a>
+<font face="Calibri, serif"><font size="3" style="font-size: 12pt"><b>Проверка:</b></font></font>
+<font color="#8ae234"><span lang="en-US"><b>irina@irina-300E4C-300E5C-300E7C</b></span></font><span lang="en-US">:</span><font color="#729fcf"><span lang="en-US"><b>/developer</b></span></font><span lang="en-US">$ su user1</span>
+Пароль<span lang="en-US">: </span>
+<font color="#8ae234"><span lang="en-US"><b>user1@irina-300E4C-300E5C-300E7C</b></span></font><span lang="en-US">:</span><font color="#729fcf"><span lang="en-US"><b>/developer</b></span></font><span lang="en-US">$ cd /developer/fileshare/</span>
+<font color="#8ae234"><span lang="en-US"><b>user1@irina-300E4C-300E5C-300E7C</b></span></font><span lang="en-US">:</span><font color="#729fcf"><span lang="en-US"><b>/developer/fileshare</b></span></font><span lang="en-US">$ touch file1.txt</span>
+<font color="#8ae234"><span lang="en-US"><b>user1@irina-300E4C-300E5C-300E7C</b></span></font><span lang="en-US">:</span><font color="#729fcf"><span lang="en-US"><b>/developer/fileshare</b></span></font><span lang="en-US">$ ls -l</span>
+итого<span lang="en-US"> 0</span>
+<span lang="en-US">-rw-rw-r-- 1 user1 developer 0 </span>янв<span lang="en-US"> 12 16:23 file1.txt</span>
+<font color="#8ae234"><span lang="en-US"><b>user1@irina-300E4C-300E5C-300E7C</b></span></font><span lang="en-US">:</span><font color="#729fcf"><span lang="en-US"><b>/developer/fileshare</b></span></font><span lang="en-US">$ su user2</span>
+Пароль<span lang="en-US">: </span>
+<font color="#8ae234"><span lang="en-US"><b>user2@irina-300E4C-300E5C-300E7C</b></span></font><span lang="en-US">:</span><font color="#729fcf"><span lang="en-US"><b>/developer/fileshare</b></span></font><span lang="en-US">$ rm file1.txt </span>
+rm: невозможно удалить &amp;apos;file1.txt&amp;apos;: Операция не позволена
+<font color="#8ae234"><span lang="en-US"><b>user2@irina-300E4C-300E5C-300E7C</b></span></font><span lang="en-US">:</span><font color="#729fcf"><span lang="en-US"><b>/developer/fileshare</b></span></font><span lang="en-US">$ su user1</span>
+Пароль<span lang="en-US">: </span>
+<font color="#8ae234"><span lang="en-US"><b>user1@irina-300E4C-300E5C-300E7C</b></span></font><span lang="en-US">:</span><font color="#729fcf"><span lang="en-US"><b>/developer/fileshare</b></span></font><span lang="en-US">$ rm file1.txt </span>
+<font color="#8ae234"><span lang="en-US"><b>user1@irina-300E4C-300E5C-300E7C</b></span></font><span lang="en-US">:</span><font color="#729fcf"><span lang="en-US"><b>/developer/fileshare</b></span></font><span lang="en-US">$ ls -l</span>
+итого 0
+</pre><p class="western" style="margin-bottom: 0.35cm">
+<br/>
+<br/>
+
+</p>
+</body>
+</html>

@@ -1,0 +1,207 @@
+* Задание 1
+Создать файл file1 и наполнить его произвольным содержимым. 
+Скопировать его в file2. Создать символическую ссылку file3 на file1. 
+Создать жесткую ссылку file4 на file1. Посмотреть, какие айноды у файлов. 
+Удалить file1. Что стало с остальными созданными файлами? 
+Попробовать вывести их на экран.
+
+irina@irina-300E4C-300E5C-300E7C:~/Документы$ echo *some text* > file1
+irina@irina-300E4C-300E5C-300E7C:~/Документы$ cat file1
+*some text*
+irina@irina-300E4C-300E5C-300E7C:~/Документы$ cp file1 file2
+irina@irina-300E4C-300E5C-300E7C:~/Документы$ cat file2
+*some text*
+irina@irina-300E4C-300E5C-300E7C:~/Документы$ ln -s file1 file3
+irina@irina-300E4C-300E5C-300E7C:~/Документы$ cat file3
+*some text*
+irina@irina-300E4C-300E5C-300E7C:~/Документы$ ln file1 file4
+irina@irina-300E4C-300E5C-300E7C:~/Документы$ cat file4
+*some text*
+irina@irina-300E4C-300E5C-300E7C:~/Документы$ ls -i
+1311001 file1  1320315 file2  1320924 file3  1311001 file4
+irina@irina-300E4C-300E5C-300E7C:~/Документы$ ls -il
+итого 12
+1311001 -rw-rw-r-- 2 irina irina 12 янв 12 16:32 file1
+1320315 -rw-rw-r-- 1 irina irina 12 янв 12 16:32 file2
+1320924 lrwxrwxrwx 1 irina irina  5 янв 12 16:32 file3 -> file1
+1311001 -rw-rw-r-- 2 irina irina 12 янв 12 16:32 file4
+irina@irina-300E4C-300E5C-300E7C:~/Документы$ rm file1
+irina@irina-300E4C-300E5C-300E7C:~/Документы$ ls -il
+итого 8
+1320315 -rw-rw-r-- 1 irina irina 12 янв 12 16:32 file2
+1320924 lrwxrwxrwx 1 irina irina  5 янв 12 16:32 file3 -> file1
+1311001 -rw-rw-r-- 1 irina irina 12 янв 12 16:32 file4
+irina@irina-300E4C-300E5C-300E7C:~/Документы$ cat file2
+*some text*
+irina@irina-300E4C-300E5C-300E7C:~/Документы$ cat file3
+cat: file3: Нет такого файла или каталога
+irina@irina-300E4C-300E5C-300E7C:~/Документы$ cat file4
+*some text*
+
+
+
+
+* Задание 2
+Дать созданным файлам другие, произвольные имена. 
+Создать новую символическую ссылку. Переместить ссылки в другую директорию.
+
+irina@irina-300E4C-300E5C-300E7C:~/Документы$ mv file2 file2copy
+irina@irina-300E4C-300E5C-300E7C:~/Документы$ mv file4 file4copy
+irina@irina-300E4C-300E5C-300E7C:~/Документы$ ln -s file2copy linkfile2copy
+irina@irina-300E4C-300E5C-300E7C:~/Документы$ cat linkfile2copy
+*some text*
+irina@irina-300E4C-300E5C-300E7C:~/Документы$ ls -il
+итого 8
+1320315 -rw-rw-r-- 1 irina irina 12 янв 12 16:32 file2copy
+1320924 lrwxrwxrwx 1 irina irina  5 янв 12 16:32 file3 -> file1
+1311001 -rw-rw-r-- 1 irina irina 12 янв 12 16:32 file4copy
+1320926 lrwxrwxrwx 1 irina irina  9 янв 12 16:40 linkfile2copy -> file2copy
+irina@irina-300E4C-300E5C-300E7C:~/Документы$ mkdir DirLink
+irina@irina-300E4C-300E5C-300E7C:~/Документы$ mv linkfile2copy DirLink/
+irina@irina-300E4C-300E5C-300E7C:~/Документы$ ls -il DirLink/
+итого 0
+1320926 lrwxrwxrwx 1 irina irina 9 янв 12 16:40 linkfile2copy -> file2copy
+
+* Задание 3
+Создать два произвольных файла. Первому присвоить права на чтение, 
+запись для владельца и группы, только на чтение для всех. 
+Второму присвоить права на чтение, запись только для владельца. 
+Сделать это в численном и символьном виде.
+
+irina@irina-300E4C-300E5C-300E7C:~/Документы$ touch file1 file2
+irina@irina-300E4C-300E5C-300E7C:~/Документы$ ls
+file1  file2
+irina@irina-300E4C-300E5C-300E7C:~/Документы$ chmod ug=rw,o=r file1
+irina@irina-300E4C-300E5C-300E7C:~/Документы$ chmod o=r,u+w file2
+irina@irina-300E4C-300E5C-300E7C:~/Документы$ ls -l
+итого 0
+-rw-rw-r-- 1 irina irina 0 янв 11 19:20 file1
+-rw-r--r-- 1 irina irina 0 янв 11 19:20 file2
+Символьный вид
+irina@irina-300E4C-300E5C-300E7C:~/Документы$ chmod 664 file1
+irina@irina-300E4C-300E5C-300E7C:~/Документы$ chmod 644 file2
+irina@irina-300E4C-300E5C-300E7C:~/Документы$ ls -l
+итого 0
+-rw-rw-r-- 1 irina irina 0 янв 11 19:20 file1
+-rw-r--r-- 1 irina irina 0 янв 11 19:20 file2
+irina@irina-300E4C-300E5C-300E7C:~/Документы$ 
+
+
+* Задание 4
+
+Создать пользователя, обладающего возможностью выполнять действия 
+от имени суперпользователя.
+
+irina@irina-300E4C-300E5C-300E7C:~$ sudo useradd -G sudo yoda
+irina@irina-300E4C-300E5C-300E7C:~$ sudo passwd yoda
+Введите новый пароль UNIX: 
+Повторите ввод нового пароля UNIX: 
+passwd: пароль успешно обновлён
+irina@irina-300E4C-300E5C-300E7C:~$ cat /etc/group
+yoda:x:1001:
+Проверка:
+irina@irina-300E4C-300E5C-300E7C:~$ su yoda
+Пароль: 
+$ sudo adduser kinobi
+$ sudo adduser kinobi
+Добавляется пользователь «kinobi» ...
+Добавляется новая группа «kinobi» (1002) ...
+Добавляется новый пользователь «kinobi» (1002) в группу «kinobi» ...
+Создаётся домашний каталог «/home/kinobi» ...
+Копирование файлов из «/etc/skel» ...
+Введите новый пароль UNIX: 
+Повторите ввод нового пароля UNIX: 
+passwd: пароль успешно обновлён
+Изменение информации о пользователе kinobi
+Введите новое значение или нажмите ENTER для выбора значения по умолчанию
+        Полное имя []: 
+        Номер комнаты []: 
+        Рабочий телефон []: 
+        Домашний телефон []: 
+        Другое []: 
+Данная информация корректна? [Y/n] 
+$ sudo userdel -r kinobi
+
+* Задание 5 
+Создать группу developer, несколько пользователей, входящих в эту группу. 
+Создать директорию для совместной работы. 
+Сделать так, чтобы созданные одними пользователями файлы могли 
+изменять другие пользователи этой группы.
+
+irina@irina-300E4C-300E5C-300E7C:~$ sudo useradd -m -G developer -s /bin/bash user1
+irina@irina-300E4C-300E5C-300E7C:~$ sudo useradd -m -G developer -s /bin/bash user2
+irina@irina-300E4C-300E5C-300E7C:~$ sudo passwd user1
+Введите новый пароль UNIX: 
+Повторите ввод нового пароля UNIX: 
+passwd: пароль успешно обновлён
+irina@irina-300E4C-300E5C-300E7C:~$ sudo passwd user2
+Введите новый пароль UNIX: 
+Повторите ввод нового пароля UNIX: 
+passwd: пароль успешно обновлён
+irina@irina-300E4C-300E5C-300E7C:~$ cat /etc/group
+user1:x:1003:
+user2:x:1004:
+irina@irina-300E4C-300E5C-300E7C:~$ sudo mkdir /developer
+[sudo] пароль для irina: 
+irina@irina-300E4C-300E5C-300E7C:~$ sudo chgrp developer /developer
+irina@irina-300E4C-300E5C-300E7C:~$ sudo chmod 2775 /developer
+irina@irina-300E4C-300E5C-300E7C:~$ ls -al /developer
+итого 8
+drwxrwsr-x  2 root developer 4096 янв 12 13:34 .
+drwxr-xr-x 25 root root      4096 янв 12 13:34 ..
+Проверка:
+irina@irina-300E4C-300E5C-300E7C:~$ su user1
+Пароль: 
+user1@irina-300E4C-300E5C-300E7C:/home/irina$ cd /developer
+user1@irina-300E4C-300E5C-300E7C:/developer$ touch file1.txt
+user1@irina-300E4C-300E5C-300E7C:/developer$ ls
+file1.txt
+user1@irina-300E4C-300E5C-300E7C:/developer$ su user2
+Пароль: 
+user2@irina-300E4C-300E5C-300E7C:/developer$ echo test > file1.txt
+user2@irina-300E4C-300E5C-300E7C:/developer$ cat file1.txt 
+test
+
+* Задание 6
+
+Создать в директории для совместной работы поддиректорию для обмена файлами, 
+но чтобы удалять файлы могли только их создатели.
+
+irina@irina-300E4C-300E5C-300E7C:/developer$ sudo mkdir fileshare
+[sudo] пароль для irina: 
+irina@irina-300E4C-300E5C-300E7C:/developer$ ls -l
+итого 8
+-rw-rw-r-- 1 user1 developer    5 янв 12 13:56 file1.txt
+drwxr-sr-x 2 root  developer 4096 янв 12 14:18 fileshare
+irina@irina-300E4C-300E5C-300E7C:/developer$ sudo chmod +t fileshare/
+[sudo] пароль для irina: 
+irina@irina-300E4C-300E5C-300E7C:/developer$ ls -l 
+итого 8
+-rw-rw-r-- 1 user1 developer    5 янв 12 13:56 file1.txt
+drwxr-sr-t 2 root  developer 4096 янв 12 14:18 fileshare
+irina@irina-300E4C-300E5C-300E7C:/developer$ sudo chmod g+w fileshare/
+irina@irina-300E4C-300E5C-300E7C:/developer$ ls -l
+итого 8
+-rw-rw-r-- 1 user1 developer    5 янв 12 16:09 file1.txt
+drwxrwsr-t 2 root  developer 4096 янв 12 14:18 fileshare
+
+Проверка:
+
+irina@irina-300E4C-300E5C-300E7C:/developer$ su user1
+Пароль: 
+user1@irina-300E4C-300E5C-300E7C:/developer$ cd /developer/fileshare/
+user1@irina-300E4C-300E5C-300E7C:/developer/fileshare$ touch file1.txt
+user1@irina-300E4C-300E5C-300E7C:/developer/fileshare$ ls -l
+итого 0
+-rw-rw-r-- 1 user1 developer 0 янв 12 16:23 file1.txt
+user1@irina-300E4C-300E5C-300E7C:/developer/fileshare$ su user2
+Пароль: 
+user2@irina-300E4C-300E5C-300E7C:/developer/fileshare$ rm file1.txt 
+rm: невозможно удалить &apos;file1.txt&apos;: Операция не позволена
+user2@irina-300E4C-300E5C-300E7C:/developer/fileshare$ su user1
+Пароль: 
+user1@irina-300E4C-300E5C-300E7C:/developer/fileshare$ rm file1.txt 
+user1@irina-300E4C-300E5C-300E7C:/developer/fileshare$ ls -l
+итого 0
+
+
